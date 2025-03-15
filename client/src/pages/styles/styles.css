@@ -1,0 +1,20 @@
+.homepage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.homepage, h1 {
+    font-size: 50px;
+    color: #333;
+    text-align: center;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #333333;
+}
