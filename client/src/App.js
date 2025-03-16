@@ -1,8 +1,10 @@
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import "./styles.css"
 
 import Homepage from "./pages/Homepage";
 import Layout from "./pages/Layout";
 import Main from "./pages/Main";
+import RoulettePage from "./pages/Roulette";
 
 function App() {
 	return (
@@ -12,7 +14,7 @@ function App() {
 					<Route index element={<Main />} />
 					<>
 						<Route path="/Main" element={<Main />} />
-						{/*<Route path="/About" element={<About />} />*/}
+						<Route path="/Roulette" element={<RoulettePage />} />
 						{/*<Route path="/Projects" element={<Projects />} />*/}
 					</>
 				</Route>
