@@ -1,9 +1,18 @@
 import React, { useState } from "react";
 import styled, { keyframes, css } from "styled-components";
+import "./styles.css";
 
 const spin = keyframes`
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+`;
+
+const Container = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid black;
 `;
 
 const Wheel = styled.div`
@@ -97,7 +106,8 @@ const Roulette = () => {
 	};
 
 	return (
-		<div>
+		<Container>
+			<p className="pointer">V</p>
 			<Wheel spinning={spinning} angle={angle}>
 				{numbers.map((num, index) => (
 					<Number
@@ -109,9 +119,9 @@ const Roulette = () => {
 					</Number>
 				))}
 			</Wheel>
-			<button onClick={handleSpin}>Spin</button>
+			<button onClick={handleSpin} className="spinnerButton">Spin</button>
 			{result !== null && <p>Result: {result}</p>}
-		</div>
+		</Container>
 	);
 };
 
