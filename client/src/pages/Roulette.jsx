@@ -1,9 +1,13 @@
 import react from "react";
+
+import Page from "../components/page";
 import Roulette from "../components/routlette";
 
 const RoulettePage = () => {
   return (
-    <Roulette />
+    <Page>
+      <Roulette />
+    </Page>
   );
 };
 

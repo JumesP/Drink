@@ -8,11 +8,15 @@ const spin = keyframes`
 `;
 
 const Container = styled.div`
+	background: #e7fdd8;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-around;
 	border: 1px solid black;
+	margin: 20px;
+	height: 80%;
+	width: 80%;
 `;
 
 const Wheel = styled.div`
@@ -107,18 +111,20 @@ const Roulette = () => {
 
 	return (
 		<Container>
-			<p className="pointer">V</p>
-			<Wheel spinning={spinning} angle={angle}>
-				{numbers.map((num, index) => (
-					<Number
-						key={num.number}
-						color={num.color}
-						angle={(360 / numbers.length) * index}
-					>
-						{num.number}
-					</Number>
-				))}
-			</Wheel>
+			<div className="WheelParent">
+				<p className="pointer">V</p>
+				<Wheel spinning={spinning} angle={angle}>
+					{numbers.map((num, index) => (
+						<Number
+							key={num.number}
+							color={num.color}
+							angle={(360 / numbers.length) * index}
+						>
+							{num.number}
+						</Number>
+					))}
+				</Wheel>
+			</div>
 			<button onClick={handleSpin} className="spinnerButton">Spin</button>
 			{result !== null && <p>Result: {result}</p>}
 		</Container>

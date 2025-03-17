@@ -5,6 +5,7 @@ import Homepage from "./pages/Homepage";
 import Layout from "./pages/Layout";
 import Main from "./pages/Main";
 import RoulettePage from "./pages/Roulette";
+import BlackJackPage from "./pages/BlackJack";
 
 function App() {
 	return (
@@ -15,7 +16,7 @@ function App() {
 					<>
 						<Route path="/Main" element={<Main />} />
 						<Route path="/Roulette" element={<RoulettePage />} />
-						{/*<Route path="/Projects" element={<Projects />} />*/}
+						<Route path="/BlackJack" element={<BlackJackPage />} />
 					</>
 				</Route>
 			</Routes>
