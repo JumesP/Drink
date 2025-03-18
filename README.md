@@ -16,6 +16,11 @@ tbc
 ## Black Jack
 tbc
 
+### Drinking Rules:
+
+- If you bust a hand, take a drink
+- If you win a hand, give out a drink
+- If you get a blackjack, give out 2 drinks
 
 # How to run?
 
