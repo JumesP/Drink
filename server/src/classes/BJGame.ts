@@ -7,16 +7,23 @@ type Dealer = {
     cards: Hand;
     total: number;
     status: "In Play" | "Busted" | "Stay" | "BlackJack";
-}
+};
 
 type Player = {
     name: string;
     cards: Hand;
     total: number;
-    status: "In Play" | "Busted" | "Stay" | "BlackJack" | "Won" | "Lost" | "Drew";
-}
+    status:
+        | "In Play"
+        | "Busted"
+        | "Stay"
+        | "BlackJack"
+        | "Won"
+        | "Lost"
+        | "Drew";
+};
 
-type Hand = Card[];
+type Hand = typeof Hand;
 
 type Card = {
     value: "A" | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | "J" | "Q" | "K";
@@ -67,7 +74,7 @@ class BlackJackGame {
             // start Dealer's Turn
             this.DealersTurn();
         }
-    };
+    }
 
     StandPlayer(player: string) {
         this.players.forEach((p) => {
@@ -85,8 +92,11 @@ class BlackJackGame {
     BustChecker(player: string) {
         this.players.forEach((p) => {
             if (p.name === player) {
-                while (p.total > 21 && p.cards.some(card => card.value === "A")) {
-                        p.cards.forEach((card) => {
+                while (
+                    p.total > 21 &&
+                    p.cards.some((card) => card.value === "A")
+                ) {
+                    p.cards.forEach((card) => {
                         if (card.value === "A" && p.total > 21) {
                             card.value = 1 as any; // Change Ace value to 1
                             p.total -= 10; // Adjust total score
@@ -127,7 +137,9 @@ class BlackJackGame {
     }
 
     CheckWinners() {
-        let winners = this.players.filter((p) => p.status === "BlackJack" || p.status === "Stay");
+        let winners = this.players.filter(
+            (p) => p.status === "BlackJack" || p.status === "Stay",
+        );
         let dealer = this.dealer;
         let dealerScore = dealer.total;
         let dealerStatus = dealer.status;
