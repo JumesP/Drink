@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const Card = require("../classes/cards.js");
-const Hand = require("../classes/PairOfCards.js");
+const Hand = require("../classes/hand.js");
 const BJPlayer = require("../classes/BJPlayer.js");
 const BJDealer = require("../classes/BJDealer.js");
 const BlackJackGame = require("../classes/BJGame.js");

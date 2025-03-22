@@ -10,7 +10,15 @@ class Hand {
 
     getHand() {
         console.log(this.cards);
-        return this.cards;
+
+        const returnableCard = this.cards.map((card) => {
+            if (card === "None") {
+                return card;
+            }
+            return card.getCard();
+        })
+
+        return returnableCard;
     }
 
     // setters

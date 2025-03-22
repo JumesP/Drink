@@ -1,4 +1,5 @@
 const Card = require("./cards");
+const Hand = require("./hand");
 
 type Players = Player[];
 
