@@ -29,14 +29,14 @@ type Hand = typeof Hand;
 type Card = {
     value: "A" | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | "J" | "Q" | "K";
     suit: "Hearts" | "Diamonds" | "Clubs" | "Spades";
-}
+};
 
 class BlackJackGame {
     private dealer: Dealer;
     private players: Players;
-    constructor(dealer : Dealer, players : Players) {
-        this.dealer = dealer
-        this.players = players
+    constructor(dealer: Dealer, players: Players) {
+        this.dealer = dealer;
+        this.players = players;
     }
 
     //getters
