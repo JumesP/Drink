@@ -52,7 +52,10 @@ class BlackJackGame {
             };
         });
 
-        const updatedDealer = {...this.dealer, cards: this.dealer.cards.getHand()};
+        const updatedDealer = {
+            ...this.dealer,
+            cards: this.dealer.cards.getHand(),
+        };
 
         return {
             dealerhand: updatedDealer,
@@ -109,16 +112,14 @@ class BlackJackGame {
     }
 
     SplitPlayer(player: string) {
-
         console.log("Splitting Player: ", player);
-        console.log(this.getAllData())
-        console.log("concludes data")
-        console.log(this.players)
-        console.log("concludes players")
+        console.log(this.getAllData());
+        console.log("concludes data");
+        console.log(this.players);
+        console.log("concludes players");
 
         this.players.forEach((p) => {
             if (p.name === player) {
-
                 const newHand = p.cards.SplitHand();
 
                 // split must ensure the new player name is unique
@@ -234,7 +235,9 @@ class BlackJackGame {
         this.originalPlayers.forEach((player: string) => {
             let playerTotal = 0;
             console.log("Player: ", player);
-            for (const p of this.players.filter((p) => p.name.includes(player))) {
+            for (const p of this.players.filter((p) =>
+                p.name.includes(player),
+            )) {
                 switch (p.status) {
                     case "BlackJack":
                         playerTotal += 2;
@@ -251,7 +254,7 @@ class BlackJackGame {
                         break;
                 }
             }
-            Drinks.push({player: player, drinks: playerTotal});
+            Drinks.push({ player: player, drinks: playerTotal });
         });
         this.drinkCalculations = Drinks;
     }

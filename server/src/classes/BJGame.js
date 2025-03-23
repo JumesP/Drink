@@ -1,14 +1,19 @@
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
+var __assign =
+    (this && this.__assign) ||
+    function () {
+        __assign =
+            Object.assign ||
+            function (t) {
+                for (var s, i = 1, n = arguments.length; i < n; i++) {
+                    s = arguments[i];
+                    for (var p in s)
+                        if (Object.prototype.hasOwnProperty.call(s, p))
+                            t[p] = s[p];
+                }
+                return t;
+            };
+        return __assign.apply(this, arguments);
     };
-    return __assign.apply(this, arguments);
-};
 var Card = require("./cards");
 var Hand = require("./hand");
 var BlackJackGame = /** @class */ (function () {
@@ -21,9 +26,13 @@ var BlackJackGame = /** @class */ (function () {
     //getters
     BlackJackGame.prototype.getAllData = function () {
         var updatedPlayers = this.players.map(function (player) {
-            return __assign(__assign({}, player), { cards: player.cards.getHand() });
+            return __assign(__assign({}, player), {
+                cards: player.cards.getHand(),
+            });
         });
-        var updatedDealer = __assign(__assign({}, this.dealer), { cards: this.dealer.cards.getHand() });
+        var updatedDealer = __assign(__assign({}, this.dealer), {
+            cards: this.dealer.cards.getHand(),
+        });
         return {
             dealerhand: updatedDealer,
             hand: updatedPlayers,
@@ -82,7 +91,11 @@ var BlackJackGame = /** @class */ (function () {
                 // split must ensure the new player name is unique
                 var splitIndex = 1;
                 var newPlayerName_1 = "".concat(player, " ").concat(splitIndex);
-                while (_this.players.some(function (p) { return p.name === newPlayerName_1; })) {
+                while (
+                    _this.players.some(function (p) {
+                        return p.name === newPlayerName_1;
+                    })
+                ) {
                     splitIndex++;
                     newPlayerName_1 = "".concat(player, " ").concat(splitIndex);
                 }
@@ -92,7 +105,11 @@ var BlackJackGame = /** @class */ (function () {
                     total: newHand.handTotal(),
                     status: "In Play",
                 };
-                _this.players.splice(_this.players.indexOf(p) + 1, 0, newPlayer);
+                _this.players.splice(
+                    _this.players.indexOf(p) + 1,
+                    0,
+                    newPlayer,
+                );
                 p.total = p.cards.handTotal();
                 // old player needs to be recalculated
             }
@@ -114,18 +131,18 @@ var BlackJackGame = /** @class */ (function () {
                 // }
                 if (p.total > 21) {
                     p.status = "Busted";
-                }
-                else if (p.total === 21) {
+                } else if (p.total === 21) {
                     p.status = "BlackJack";
-                }
-                else {
+                } else {
                     p.status = "In Play";
                 }
             }
         });
     };
     BlackJackGame.prototype.CheckIfAnyPlayersRemainPlaying = function () {
-        var players = this.players.filter(function (p) { return p.status === "In Play"; });
+        var players = this.players.filter(function (p) {
+            return p.status === "In Play";
+        });
         console.log("Players Remaining: ", players.length);
         return players.length === 0;
     };
@@ -137,17 +154,17 @@ var BlackJackGame = /** @class */ (function () {
         }
         if (this.dealer.total > 21) {
             this.dealer.status = "Busted";
-        }
-        else if (this.dealer.total === 21) {
+        } else if (this.dealer.total === 21) {
             this.dealer.status = "BlackJack";
-        }
-        else {
+        } else {
             this.dealer.status = "Stay";
         }
         this.CheckWinners();
     };
     BlackJackGame.prototype.CheckWinners = function () {
-        var winners = this.players.filter(function (p) { return p.status === "BlackJack" || p.status === "Stay"; });
+        var winners = this.players.filter(function (p) {
+            return p.status === "BlackJack" || p.status === "Stay";
+        });
         var dealer = this.dealer;
         var dealerScore = dealer.total;
         var dealerStatus = dealer.status;
@@ -157,20 +174,16 @@ var BlackJackGame = /** @class */ (function () {
             if (dealerStatus === "Busted") {
                 // Player Wins
                 p.status = "Won";
-            }
-            else if (playerStatus === "BlackJack") {
+            } else if (playerStatus === "BlackJack") {
                 // Player Wins
                 p.status = "BlackJack";
-            }
-            else if (playerScore > dealerScore) {
+            } else if (playerScore > dealerScore) {
                 // Player Wins
                 p.status = "Won";
-            }
-            else if (playerScore === dealerScore) {
+            } else if (playerScore === dealerScore) {
                 // Push
                 p.status = "Drew";
-            }
-            else {
+            } else {
                 // Dealer Wins
                 p.status = "Lost";
             }
@@ -185,7 +198,14 @@ var BlackJackGame = /** @class */ (function () {
         this.originalPlayers.forEach(function (player) {
             var playerTotal = 0;
             console.log("Player: ", player);
-            for (var _i = 0, _a = _this.players.filter(function (p) { return p.name.includes(player); }); _i < _a.length; _i++) {
+            for (
+                var _i = 0,
+                    _a = _this.players.filter(function (p) {
+                        return p.name.includes(player);
+                    });
+                _i < _a.length;
+                _i++
+            ) {
                 var p = _a[_i];
                 switch (p.status) {
                     case "BlackJack":
@@ -208,5 +228,5 @@ var BlackJackGame = /** @class */ (function () {
         this.drinkCalculations = Drinks;
     };
     return BlackJackGame;
-}());
+})();
 module.exports = BlackJackGame;

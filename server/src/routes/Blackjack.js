@@ -105,13 +105,13 @@ router.post("/dealHands", (req, res) => {
 
         console.log("Hand has been generated");
         console.log(PairOfCards.getHand());
-        console.log("\n\n")
+        console.log("\n\n");
 
         let Player = new BJPlayer(
             players[i],
             PairOfCards,
             PairOfCards.handTotal(),
-            PairOfCards.handTotal() === 21 ? "BlackJack" : "In Play"
+            PairOfCards.handTotal() === 21 ? "BlackJack" : "In Play",
         );
 
         hands.push(Player.getPlayerDetails());

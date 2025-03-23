@@ -16,7 +16,7 @@ class Hand {
                 return card;
             }
             return card.getCard();
-        })
+        });
 
         return returnableCard;
     }
@@ -67,15 +67,16 @@ class Hand {
             console.log("true");
             for (let A = 0; A < totalAces; A++) {
                 console.log("Ace");
-                if (total + 10 <= 21) { // to see if the A would be valid to increase score
-                    console.log("total is less than 21")
+                if (total + 10 <= 21) {
+                    // to see if the A would be valid to increase score
+                    console.log("total is less than 21");
                     total += 10;
                 } else {
                     break;
                 }
             }
         }
-        console.log(total)
+        console.log(total);
         return total;
     }
 

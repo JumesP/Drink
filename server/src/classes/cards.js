@@ -6,7 +6,6 @@ class Card {
         this.suit = suit;
     }
 
-
     getCard() {
         return { value: this.value, suit: this.suit };
     }
