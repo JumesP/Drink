@@ -5,6 +5,8 @@ import Page from "../components/page";
 import CardTable from "../components/BlackJack/CardTable";
 import GroupOfCards from "../components/BlackJack/GroupOfCards";
 
+import ResultContainer from "../components/BlackJack/ResultContainer";
+
 const BlackJackPage = () => {
 	const [playersAmount, setPlayersAmount] = useState("");
 	const [playerNames, setPlayerNames] = useState([]);
@@ -151,19 +153,7 @@ const BlackJackPage = () => {
 				/>
 			)}
 			{results && allData && allData.results && (
-				<div>
-					<h2>Results</h2>
-					{allData.results.map((playerResult, index) => (
-						<div key={index}>
-							<h3>Player: {playerResult.player}</h3>
-							<p>
-								{playerResult.drinks < 0
-									? `Take ${Math.abs(playerResult.drinks)} ${Math.abs(playerResult.drinks) === 1 ? "drink" : "drinks"}!`
-									: `Give out: ${playerResult.drinks} ${playerResult.drinks === 1 ? "drink" : "drinks"}!`}
-							</p>
-						</div>
-					))}
-				</div>
+				<ResultContainer results={allData.results} />
 			)}
 		</Page>
 	);
