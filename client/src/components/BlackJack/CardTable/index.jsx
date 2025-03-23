@@ -7,8 +7,8 @@ import GroupOfCards from "../GroupOfCards";
 // this all the card on the table
 // dealing with the funky ass data
 
-const CardTable = ({ allGameData, handleHit, handleStand }) => {
-	const allGameDataStructuer = {
+const CardTable = ({ allGameData, handleHit, handleStand, handleSplit }) => {
+	const allGameDataStructure = {
 		dealerHand: {
 			Owner: "Dealer",
 			Hand: [
@@ -74,11 +74,11 @@ const CardTable = ({ allGameData, handleHit, handleStand }) => {
 		display: flex;
 	`;
 
-	console.log("\n\n\n\n")
-	console.log(allGameData)
-	console.log("\n\n\n\n")
-	console.log(dealerData)
-	console.log(playerData)
+	// console.log("\n\n\n\n")
+	// console.log(allGameData)
+	// console.log("\n\n\n\n")
+	// console.log(dealerData)
+	// console.log(playerData)
 
 	return (
 		<StyledGameTable>
@@ -87,6 +87,7 @@ const CardTable = ({ allGameData, handleHit, handleStand }) => {
 					name={dealerData.name}
 					cards={dealerData.cards}
 					total={dealerData.total}
+					status={dealerData.status}
 				/>
 			</StyledDealerSide>
 
@@ -99,6 +100,7 @@ const CardTable = ({ allGameData, handleHit, handleStand }) => {
 						status={hands.status}
 						onHit={handleHit}
 						onStand={handleStand}
+						onSplit={handleSplit}
 					/>
 				))}
 			</StyledPlayerSide>

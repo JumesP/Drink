@@ -3,6 +3,7 @@ class BJDealer {
         this.name = name; // string
         this.cards = hand; // array of objects
         this.total = total; // int
+        this.status = "In Play"; // string
     }
 
     //getters
@@ -16,10 +17,6 @@ class BJDealer {
     }
 
     //setters
-    addCard(card) {
-        this.cards.push(card);
-    }
-
     setTotal(total) {
         this.total = total;
     }

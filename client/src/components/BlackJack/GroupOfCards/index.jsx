@@ -3,7 +3,10 @@ import styled from "styled-components";
 import "./styles.css";
 import Card from "../Card/index";
 
-const GroupOfCards = ({ name, cards, total, status, onHit, onStand }) => {
+const GroupOfCards = ({ name, cards, total, status, onHit, onStand, onSplit }) => {
+
+    // cards = cards.cards
+
     const StyledGroupOfCardsAll = styled.div`
       display: flex;
       flex-direction: column;
@@ -40,12 +43,8 @@ const GroupOfCards = ({ name, cards, total, status, onHit, onStand }) => {
         flex-direction: column;
     `;
 
-
-    console.log(name);
-    console.log(cards);
-    console.log(total);
-
     const canSplit = () => {
+        cards = cards.filter(card => card !== "None");
         if (cards.length !== 2) return false;
         const cardValues = ["10", "J", "Q", "K"];
         return (
@@ -54,22 +53,27 @@ const GroupOfCards = ({ name, cards, total, status, onHit, onStand }) => {
         );
     };
 
+    console.log(cards)
+
     return (
 		<StyledGroupOfCardsAll>
 			<h2>{name}</h2>
 			<StyledGroupOfCards>
 				{cards.map((card, index) => (
-					<StyledCardWrapper key={index}>
-						<Card card={card} />
-					</StyledCardWrapper>
-				))}
+                    card !== "None" && (
+                        <StyledCardWrapper key={index}>
+                            <Card card={card} />
+                        </StyledCardWrapper>
+                    )
+                ))}
 			</StyledGroupOfCards>
 			<p>{total}</p>
 			{status === "In Play" &&
+                name !== "Dealer" &&
 				<StyledButtonCluster>
 					<button onClick={() => onHit(name)}>Hit</button>
 					<button onClick={() => onStand(name)}>Stand</button>
-					{canSplit() && <button>Split</button>}
+					{canSplit() && <button onClick={() => onSplit(name)}>Split</button>}
 					<button>Beat up Dealer</button>
 				</StyledButtonCluster>
 			}

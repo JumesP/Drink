@@ -8,6 +8,7 @@ const BJDealer = require("../classes/BJDealer.js");
 const BlackJackGame = require("../classes/BJGame.js");
 
 let Game;
+let originalPlayers = [];
 
 router.post("/game", (req, res) => {
     console.log("Game has started");
@@ -92,18 +93,25 @@ router.post("/dealHands", (req, res) => {
     console.log("For " + players.length + " players");
     console.log("--------------------");
 
+    originalPlayers = players;
     let hands = [];
 
     for (let i = 0; i < players.length; i++) {
         let FirstCard = Card.generateCard();
         let SecondCard = Card.generateCard();
+        // let FirstCard = Card.generateSpecificCard("K");
+        // let SecondCard = Card.generateSpecificCard("J");
         let PairOfCards = new Hand(FirstCard, SecondCard);
+
+        console.log("Hand has been generated");
+        console.log(PairOfCards.getHand());
+        console.log("\n\n")
 
         let Player = new BJPlayer(
             players[i],
             PairOfCards,
             PairOfCards.handTotal(),
-            (status = "In Play"),
+            PairOfCards.handTotal() === 21 ? "BlackJack" : "In Play"
         );
 
         hands.push(Player.getPlayerDetails());
@@ -129,8 +137,7 @@ router.post("/dealHands", (req, res) => {
     // console.log(dealerHand);
 
     // Create Game
-    console.log("Hands", hands);
-    Game = new BlackJackGame(dealerHand.getDealerDetails(), hands);
+    Game = new BlackJackGame(dealerHand, hands, originalPlayers);
     console.log("\nGame has been created");
     console.log(Game.getAllData());
 
@@ -151,9 +158,7 @@ router.post("/hit", (req, res) => {
     let newCard = Card.generateCard();
     console.log("New Card: ");
     console.log(newCard);
-
-    // add new card to the player's hand within the game class here
-    // send the game class back to the front end
+    console.log(newCard.getCard());
 
     Game.addCardToPlayer(player, newCard);
 
@@ -170,10 +175,22 @@ router.post("/stand", (req, res) => {
     const { player } = req.body;
     console.log("Player: " + player);
 
-    // set the player's status to "Stand" within the game class here
-    // send the game class back to the front end
-
     Game.StandPlayer(player);
+
+    try {
+        res.json(Game.getAllData());
+    } catch {
+        res.status(500).send("Error");
+    }
+});
+
+router.post("/split", (req, res) => {
+    console.log("Player is splitting");
+
+    const { player } = req.body;
+    console.log("Player: " + player);
+
+    Game.SplitPlayer(player);
 
     try {
         res.json(Game.getAllData());

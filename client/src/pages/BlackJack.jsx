@@ -8,6 +8,7 @@ const BlackJackPage = () => {
     const [playerNames, setPlayerNames] = useState([]);
     const [showPlayerInputs, setShowPlayerInputs] = useState(false);
     const [allData, setAllData] = useState(null);
+    const [results, setResults] = useState(false);
 
     const handlePlayersAmountSubmit = (event) => {
         event.preventDefault();
@@ -76,9 +77,29 @@ const BlackJackPage = () => {
         });
     }
 
+    const handleSplit = (playerName) => {
+        fetch("/blackjackRouter/split", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ player: playerName }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            setAllData(data);
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+        });
+    }
+
     useEffect(() => {
         // This effect will run every time allData is updated
         console.log("allData has been updated", allData);
+        if (allData && allData.results) {
+            setResults(true);
+        }
     }, [allData]);
 
     return (
@@ -114,7 +135,18 @@ const BlackJackPage = () => {
                     <input type="submit" value="Submit Players" />
                 </form>
             )}
-            {allData && <CardTable allGameData={allData} handleHit={handleHit} handleStand={handleStand} />}
+            {allData && <CardTable allGameData={allData} handleHit={handleHit} handleStand={handleStand} handleSplit={handleSplit} />}
+            {results && allData && allData.results && (
+                <div>
+                    <h2>Results</h2>
+                    {allData.results.map((playerResult, index) => (
+                        <div key={index}>
+                            <h3>Player: {playerResult.player}</h3>
+                            <p>{playerResult.drinks < 0 ? `Take ${Math.abs(playerResult.drinks)} ${Math.abs(playerResult.drinks) === 1 ? 'drink' : 'drinks'}!` : `Give out: ${playerResult.drinks} ${playerResult.drinks === 1 ? 'drink' : 'drinks'}!`}</p>
+                        </div>
+                    ))}
+                </div>
+            )}
         </Page>
     );
 }
