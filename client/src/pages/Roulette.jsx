@@ -4,11 +4,11 @@ import Page from "../components/page";
 import Roulette from "../components/routlette";
 
 const RoulettePage = () => {
-  return (
-    <Page>
-      <Roulette />
-    </Page>
-  );
+	return (
+		<Page>
+			<Roulette />
+		</Page>
+	);
 };
 
 export default RoulettePage;

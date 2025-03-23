@@ -108,4 +108,4 @@ const CardTable = ({ allGameData, handleHit, handleStand, handleSplit }) => {
 	);
 };
 
-export default CardTable
+export default CardTable;

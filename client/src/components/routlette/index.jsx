@@ -125,7 +125,9 @@ const Roulette = () => {
 					))}
 				</Wheel>
 			</div>
-			<button onClick={handleSpin} className="spinnerButton">Spin</button>
+			<button onClick={handleSpin} className="spinnerButton">
+				Spin
+			</button>
 			{result !== null && <p>Result: {result}</p>}
 		</Container>
 	);
