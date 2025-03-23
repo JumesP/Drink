@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import GroupOfCards from "../components/BlackJack/GroupOfCards";
-import CardTable from "../components/BlackJack/CardTable";
+
 import Page from "../components/page";
+
+import CardTable from "../components/BlackJack/CardTable";
+import GroupOfCards from "../components/BlackJack/GroupOfCards";
 
 const BlackJackPage = () => {
 	const [playersAmount, setPlayersAmount] = useState("");
