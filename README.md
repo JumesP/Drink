@@ -55,8 +55,8 @@ tbc
 
 1. Clone the repository
 2. open 2 terminals, one for client the other for server 
-3. Firstly the client, Run the following command in the terminal `npm run start`
-4. Secondly the server, Run the following command in the terminal `npm run start`
+3. Firstly the client,Run the following command in the terminal `npm i` then `npm run start`
+4. Secondly the server, Run the following command in the terminal `npm i` then `npm run start`
 5. Open your browser and go to `http://localhost:3000/`
 6. Enjoy the game!
 
