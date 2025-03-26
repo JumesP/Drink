@@ -62,7 +62,12 @@ tbc
 
 
 ## How to play?
-tbc
+
+Enter the amount of players playing in the first box,
+
+following this, enter the names of all the players in the boxes below.
+
+Once all players have been entered, click the start button to begin the game.
 
 # To Do:
 
