@@ -69,6 +69,17 @@ following this, enter the names of all the players in the boxes below.
 
 Once all players have been entered, click the start button to begin the game.
 
+
+Once the game begins, each player must chose one of the following options:
+
+- Hit: Receive the next card in the deck
+- Stand: Keep the current hand
+- Split: Split the current hand into two separate hands (only available if the player has two cards of the same value)
+
+The aim of the game is to have as close to 21 as possible without going over. If a player goes over 21, they bust and must take a drink.
+The player with a hand value than the dealer at the end of the game, this will award them a drink to give out to another player.
+Additionally, if the player gets a blackjack (21), they must give out 2 drinks to other players.
+
 # To Do:
 
 ## Routlette
