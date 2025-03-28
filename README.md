@@ -87,6 +87,4 @@ Additionally, if the player gets a blackjack (21), they must give out 2 drinks t
 - [ ] Add a betting system
 
 ## Black Jack
-- [ ] Add a splitting system
-- [ ] Automatically calculate drinks to give out
-- [ ] Add clear rules to the game
+- [ ] Fix the visualizations of the game plzzz the UI sucks!
