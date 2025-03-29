@@ -7,7 +7,7 @@ const StyledPage = styled.div`
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-around;
-	background-color: blue;
+	background-color: #777777;
 `;
 
 const Page = ({ children }) => {
