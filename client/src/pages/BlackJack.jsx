@@ -108,7 +108,10 @@ const BlackJackPage = () => {
 
 	return (
 		<Page>
-			<h1>BlackJack</h1>
+			<div>
+				<h1>BlackJack</h1>
+				<p>Dealer must stand on 17 and must draw to 16</p>
+			</div>
 			{!showPlayerInputs ? (
 				<form onSubmit={handlePlayersAmountSubmit}>
 					<label>
