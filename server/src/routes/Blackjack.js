@@ -128,14 +128,6 @@ router.post("/dealHands", (req, res) => {
         PairOfCards.handTotal(),
     );
 
-    // Print Confirmation
-    // console.log("\nHands have been dealt");
-    // console.log(hands);
-    // console.log("\nFirst Hand: ");
-    // console.log(hands[0].cards);
-    // console.log("\nDealers Hand: ");
-    // console.log(dealerHand);
-
     // Create Game
     Game = new BlackJackGame(dealerHand, hands, originalPlayers);
     console.log("\nGame has been created");

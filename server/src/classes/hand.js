@@ -1,4 +1,3 @@
-// server/classes/Hand.js
 const Card = require("./cards");
 
 class Hand {

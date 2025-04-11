@@ -1,5 +1,3 @@
-// server/classes/Card.js
-
 class Card {
     constructor(value, suit) {
         this.value = value;
